@@ -1,14 +1,14 @@
-import pkg from '../db/index.cjs';
+import pkg from "../db/index.cjs";
 const { query } = pkg;
 
 export async function getUsers() {
   const result = await query("SELECT * FROM users;");
   const usersArray = result.rows;
-  console.log(`this is the users list ${usersArray}`)
+  console.log(`this is the users list ${usersArray}`);
   return usersArray;
 }
 
-// export async function getCardByID(id) {
+// export async function getByWeek(id) {
 
 //   const result = await query(`SELECT * FROM flashcards WHERE card_id = ${id}`);
 //   console.log(result.rows[0]);
