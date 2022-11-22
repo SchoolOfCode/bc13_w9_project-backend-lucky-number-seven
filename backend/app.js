@@ -24,6 +24,6 @@ app.use(express.json());
 app.use("/api/sqlRoutes", sqlRoutes);
 app.use("/api/linkRoutes", linkRoutes);
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log(`This server is running on ${PORT}`);
 });
