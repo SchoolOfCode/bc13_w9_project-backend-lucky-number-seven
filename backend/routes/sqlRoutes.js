@@ -14,7 +14,7 @@ import { getUsers  } from "../models/sqlModels.js"
 
     const response = await getUsers()
     console.log(`this is response ${response.payload}`)
-    return res.status(201).json({ success: true, payload: response });
+    res.status(201).json({ success: true, payload: response });
     });
 
   // router.get("/:id", async function (req, res) {

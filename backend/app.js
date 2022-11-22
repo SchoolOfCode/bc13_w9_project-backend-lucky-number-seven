@@ -3,7 +3,7 @@ import morgan from "morgan";
 import 'dotenv/config';
 
 
-import sqlRouter from "../backend/routes/sqlRoutes"; 
+import sqlRouter from "../backend/routes/sqlRoutes.js"; 
 
 const app = express()
 
