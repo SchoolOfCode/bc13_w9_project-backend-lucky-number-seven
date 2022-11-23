@@ -2,7 +2,12 @@ import express from "express";
 const router = express.Router();
 
 // import { getUsers, getFlashcardByTitle, getCardByID, createFlashcard, updateFlashCard, deleteFlashcardByID } from "../models/flashcardsModels.js"
-import { getByTopics, getByWeek, getLinks } from "../models/linkModels.js";
+import {
+  getByTopics,
+  getByWeek,
+  getLinks,
+  createLink,
+} from "../models/linkModels.js";
 
 router.get("/", async function (req, res) {
   if (req.query.week !== undefined) {

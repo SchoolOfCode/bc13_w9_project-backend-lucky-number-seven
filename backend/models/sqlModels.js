@@ -8,11 +8,23 @@ export async function getUsers() {
   return usersArray;
 }
 export async function createUser(newUser) {
-  const result = await query('INSERT INTO users(user_firstname, user_surname) VALUES ($1, $2) RETURNING *;',[newUser.user_firstname, newUser.user_surname]);
+  const result = await query(
+    "INSERT INTO users(user_firstname, user_surname) VALUES ($1, $2) RETURNING *;",
+    [newUser.user_firstname, newUser.user_surname]
+  );
   const user = result.rows[0];
-  console.log(user, `This is the createuser function`)
+  console.log(user, `This is the createuser function`);
   return user;
-} 
+}
+export async function createUser2(newLinks) {
+  const result = await query(
+    "INSERT INTO users(user_firstname, user_surname) VALUES ($1, $2) RETURNING *;",
+    [newLinks.user_firstname, newLinks.user_surname]
+  );
+  const user = result.rows[0];
+  console.log(user, `This is the createuser function`);
+  return user;
+}
 // export async function getByWeek(id) {
 
 //   const result = await query(`SELECT * FROM flashcards WHERE card_id = ${id}`);
