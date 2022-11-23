@@ -1,5 +1,5 @@
 import pkg from "../db/index.cjs";
-import { createUser2 } from "./sqlModels.js";
+import { createUser } from "./userModels.js";
 const { query } = pkg;
 
 export async function getByWeek(week) {
@@ -29,17 +29,20 @@ export async function createLink(newlink) {
     [newlink.user_firstname, newlink.user_surname]
   );
   if (user.rows[0]) {
-      user_id = user.rows[0].user_id;
-  } else {
-    const newUser = createUser2(newlink.user_firstname, newlink.user_surname);
-    user_id = newUser.rows[0].user_id;
+    user_id = user.rows[0].user_id;
+    // } else {
+    //   const newUser = createUser(newlink, user_firstname, newlink.user_surname);
+    //   // `SELECT user_id FROM users WHERE user_firstname = $1 and user_surname = $2`,
+    //   //   [newlink.user_firstname, newlink.user_surname];
+    //   user_id = newUser.rows[0].user_id;
+    //   console.log(newUser, user_id);
   }
-      const result = await query(
-        "INSERT INTO links (week, topic, links, user_id) VALUES ($1, $2, $3, $4) RETURNING *;",
-        [newlink.week, newlink.topic, newlink.links, user_id]
-      );
+  const result = await query(
+    "INSERT INTO links (week, topic, links, user_id) VALUES ($1, $2, $3, $4) RETURNING *",
+    [newlink.week, newlink.topic, newlink.links, user_id]
+  );
   //     const user = result.rows[0];
   //     console.log(user, `This is the createlinkfunction`);
-      return result.rows[0];
+  return result.rows[0];
   //   }
 }

@@ -12,16 +12,7 @@ export async function createUser(newUser) {
     "INSERT INTO users(user_firstname, user_surname) VALUES ($1, $2) RETURNING *;",
     [newUser.user_firstname, newUser.user_surname]
   );
-  const user = result.rows[0];
-  console.log(user, `This is the createuser function`);
-  return user;
-}
-export async function createUser2(newlink) {
-  const result = await query(
-    "INSERT INTO users(user_firstname, user_surname) VALUES ($1, $2) RETURNING *;",
-    [newlink.user_firstname, newlink.user_surname]
-  );
-  const user = result.rows[0];
+  const user = result.rows[0].user_id;
   console.log(user, `This is the createuser function`);
   return user;
 }
