@@ -46,3 +46,16 @@ export async function createLink(newlink) {
   return result.rows[0];
   //   }
 }
+// export async function getLinkByUserID(user) {
+//   const user1 = await query(
+//     `SELECT user_id FROM users WHERE user_firstname = $1 and user_surname = $2`,
+//     [user.user_firstname, user.user_surname]
+//   );
+//   user_id = user1.rows[0].user_id;
+//   const result = await query(`SELECT * FROM links WHERE user_id = $1`, [
+//     user_id,
+//   ]);
+//   const resultsArray = result.rows;
+//   // console.log(`this is the list by ${topicsArray}`);
+//   return resultsArray;
+// }
