@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
@@ -11,7 +12,6 @@
   "version": "1.0.0",
   "type": "module",
   "main": "app.js",
-  "devDependencies": {},
   "scripts": {
     "start": "node -r dotenv/config app.js",
     "dev": "nodemon -r dotenv/config app.js"
