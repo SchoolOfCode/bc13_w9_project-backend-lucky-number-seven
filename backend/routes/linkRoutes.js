@@ -2,20 +2,32 @@ import express from "express";
 const router = express.Router();
 
 // import { getUsers, getFlashcardByTitle, getCardByID, createFlashcard, updateFlashCard, deleteFlashcardByID } from "../models/flashcardsModels.js"
-import { getByWeek, getLinks } from "../models/linkModels.js";
+import { getByTopics, getByWeek, getLinks } from "../models/linkModels.js";
 
 router.get("/", async function (req, res) {
   if (req.query.week !== undefined) {
     const result = await getByWeek(req.query.week);
     console.log(`this is from week ${result}`);
     return res.status(200).json({ success: true, payload: result });
-  } else {
+  } 
+  else if (req.query.topic !== undefined) {
+    const result = await getByTopics(req.query.topic);
+    console.log(`this is from week ${result}`);
+    return res.status(200).json({ success: true, payload: result });
+  }
+  else {
     const response = await getLinks();
     console.log(`this is response ${response.payload}`);
     res.status(201).json({ success: true, payload: response });
   }
 });
 
+// router.get("/", async function (req, res) {
+  // if (req.query.week !== undefined) {
+  //   const result = await getByTopics(req.query.topic);
+  //   console.log(`this is from week ${result}`);
+  //   return res.status(200).json({ success: true, payload: result });
+  // }});
 // router.get("/:id", async function (req, res) {
 //   const book = await getCardByID(req.params.id);
 //   res.status(200).json({ success: true, payload: book });

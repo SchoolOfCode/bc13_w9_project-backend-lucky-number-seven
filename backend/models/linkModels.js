@@ -13,3 +13,11 @@ export async function getLinks() {
   console.log(`this is the list  by ${linksArray}`);
   return linksArray;
 }
+
+export async function getByTopics(topic){
+  console.log(topic)
+  const result = await query(`SELECT * FROM links WHERE topic = $1`, [topic]);
+  const topicsArray = result.rows;
+  // console.log(`this is the list by ${topicsArray}`);
+  return topicsArray; 
+}
