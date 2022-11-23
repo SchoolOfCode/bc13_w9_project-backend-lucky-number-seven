@@ -9,25 +9,27 @@ router.get("/", async function (req, res) {
     const result = await getByWeek(req.query.week);
     console.log(`this is from week ${result}`);
     return res.status(200).json({ success: true, payload: result });
-  } 
-  else if (req.query.topic !== undefined) {
+  } else if (req.query.topic !== undefined) {
     const result = await getByTopics(req.query.topic);
     console.log(`this is from week ${result}`);
     return res.status(200).json({ success: true, payload: result });
-  }
-  else {
+  } else {
     const response = await getLinks();
     console.log(`this is response ${response.payload}`);
     res.status(201).json({ success: true, payload: response });
   }
 });
+router.post("/", async function (req, res) {
+  const links = await createLink(req.body);
+  res.json({ success: true, payload: links });
+});
 
 // router.get("/", async function (req, res) {
-  // if (req.query.week !== undefined) {
-  //   const result = await getByTopics(req.query.topic);
-  //   console.log(`this is from week ${result}`);
-  //   return res.status(200).json({ success: true, payload: result });
-  // }});
+// if (req.query.week !== undefined) {
+//   const result = await getByTopics(req.query.topic);
+//   console.log(`this is from week ${result}`);
+//   return res.status(200).json({ success: true, payload: result });
+// }});
 // router.get("/:id", async function (req, res) {
 //   const book = await getCardByID(req.params.id);
 //   res.status(200).json({ success: true, payload: book });
