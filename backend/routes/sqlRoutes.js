@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 
 // import { getUsers, getFlashcardByTitle, getCardByID, createFlashcard, updateFlashCard, deleteFlashcardByID } from "../models/flashcardsModels.js"
-import { getUsers  } from "../models/sqlModels.js"
+import { getUsers, createUser } from "../models/sqlModels.js"
 
 
   router.get("/", async function (req, res) {
@@ -17,6 +17,10 @@ import { getUsers  } from "../models/sqlModels.js"
     res.status(201).json({ success: true, payload: response });
     });
 
+    router.post("/", async function (req, res) {
+      const users = await createUser(req.body);
+      res.json({success: true, payload: users})
+    })
   // router.get("/:id", async function (req, res) {
   //   const book = await getCardByID(req.params.id);
   //   res.status(200).json({ success: true, payload: book });
