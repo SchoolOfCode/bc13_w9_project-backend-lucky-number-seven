@@ -16,10 +16,10 @@ export async function createUser(newUser) {
   console.log(user, `This is the createuser function`);
   return user;
 }
-export async function createUser2(newLinks) {
+export async function createUser2(newlink) {
   const result = await query(
     "INSERT INTO users(user_firstname, user_surname) VALUES ($1, $2) RETURNING *;",
-    [newLinks.user_firstname, newLinks.user_surname]
+    [newlink.user_firstname, newlink.user_surname]
   );
   const user = result.rows[0];
   console.log(user, `This is the createuser function`);
