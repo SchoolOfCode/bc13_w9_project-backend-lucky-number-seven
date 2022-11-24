@@ -23,7 +23,10 @@ router.get("/", async function (req, res) {
     const response = await getLinks();
     console.log(`this is response ${response.payload}`);
     res.status(201).json({ success: true, payload: response });
-  } 
+  }
+  const response = await getLinks();
+  console.log(`this is response ${response.payload}`);
+  res.status(201).json({ success: true, payload: response });
   // else {
   //   const response = await getLinkByUserID();
   //   console.log(`this is response ${response.payload}`);
