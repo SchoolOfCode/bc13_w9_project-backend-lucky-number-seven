@@ -7,7 +7,7 @@ import {
   getByWeek,
   getLinks,
   createLink,
-  getLinkByUserID,
+  // getLinkByUserID,
 } from "../models/linkModels.js";
 
 router.get("/", async function (req, res) {
@@ -23,11 +23,12 @@ router.get("/", async function (req, res) {
     const response = await getLinks();
     console.log(`this is response ${response.payload}`);
     res.status(201).json({ success: true, payload: response });
-  } else {
-    const response = await getLinkByUserID();
-    console.log(`this is response ${response.payload}`);
-    res.status(201).json({ success: true, payload: response });
-  }
+  } 
+  // else {
+  //   const response = await getLinkByUserID();
+  //   console.log(`this is response ${response.payload}`);
+  //   res.status(201).json({ success: true, payload: response });
+  // }
 });
 router.post("/", async function (req, res) {
   const links = await createLink(req.body);
