@@ -19,11 +19,16 @@ router.get("/", async function (req, res) {
     const result = await getByTopics(req.query.topic);
     console.log(`this is from week ${result}`);
     return res.status(200).json({ success: true, payload: result });
-  } else if (req.query.links !== undefined) {
-    const response = await getLinks();
-    console.log(`this is response ${response.payload}`);
-    res.status(201).json({ success: true, payload: response });
   } 
+  // else if (req.query.links !== undefined) {
+  //   const response = await getLinks();
+  //   console.log(`this is response ${response.payload}`);
+  //   res.status(201).json({ success: true, payload: response });
+  // } 
+
+  const response = await getLinks();
+  console.log(`this is response ${response.payload}`);
+  res.status(201).json({ success: true, payload: response });
   // else {
   //   const response = await getLinkByUserID();
   //   console.log(`this is response ${response.payload}`);
